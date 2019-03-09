@@ -15,6 +15,19 @@ docker run -d -v $PWD/cluster-config.conf:/usr/local/etc/redis/redis.conf --name
 docker run -d -v $PWD/cluster-config.conf:/usr/local/etc/redis/redis.conf --name redis-6 --net red_cluster redis redis-server /usr/local/etc/redis/redis.conf
 ```
 
+Now we can see the running containers:
+
+```
+➜  redis-cluster git:(master) docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+aeb996679bb3        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-6
+5fd4bf3b5270        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-5
+6c7d1c749f98        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-4
+40e5bc7e3532        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-3
+192895ec8bb4        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-2
+bea3645445a6        redis               "docker-entrypoint.s…"   23 hours ago        Up 23 hours         6379/tcp            redis-1
+```
+
 Get all of the container IP addresses within the network
 
 ```
